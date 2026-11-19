@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>КиберЩит 60+</title>
+<style>
+:root{--bg:#F8FAFC;--card:#fff;--ink:#0F172A;--muted:#334155;--accent:#1E3A8A;--on:#fff;--line:#94A3B8;--soft:#E2E8F0;--ok-bg:#DCFCE7;--ok:#14532D;--warn-bg:#FEF3C7;--warn:#78350F;--stop-bg:#FEE2E2;--stop:#7F1D1D;--info-bg:#E0F2FE;--info:#0C4A6E;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{font-size:19px;scroll-padding-top:env(safe-area-inset-top,0px)}
+html.big{font-size:22px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.55 system-ui,"Segoe UI",Roboto,Verdana,Arial,sans-serif}
+.wrap{max-width:780px;margin:0 auto;padding:16px 16px 56px}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:14px}
+h1{font-size:1.6rem;line-height:1.2;margin:0}
+h2{font-size:1.35rem;line-height:1.25;margin:0 0 10px}
+h3{font-size:1.1rem;margin:0 0 6px}
+.sz{display:flex;gap:6px;align-items:center;font-size:.9rem;color:var(--muted)}
+.sz button{min-height:56px;padding:6px 14px;font:700 .9rem inherit;font-family:inherit;border:2px solid var(--accent);border-radius:12px;background:var(--card);color:var(--accent);cursor:pointer}
+.sz button[aria-pressed="true"]{background:var(--accent);color:var(--on)}
+.trust{background:var(--info-bg);color:var(--info);border:2px solid var(--info);border-radius:14px;padding:14px 16px;margin-bottom:18px}
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-bottom:18px}
+.tab{min-height:64px;padding:8px 10px;font:700 .95rem/1.25 inherit;font-family:inherit;border:2px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--on);border-color:var(--accent)}
+:focus-visible{outline:4px solid #F59E0B;outline-offset:3px}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:20px}
+.meta{color:var(--muted);font-size:.9rem;margin:0 0 10px}
+.tag{display:inline-block;background:var(--soft);border-radius:8px;padding:2px 10px;font-weight:700;font-size:.85rem;margin-left:6px}
+.msg{background:var(--soft);border-left:8px solid var(--accent);border-radius:12px;padding:14px 16px;margin:0 0 18px}
+.msg.chat{border-left:0;border-radius:18px 18px 18px 4px;background:#EEF2FF}
+.msg b{display:block;margin-bottom:4px}
+.btn{display:block;width:100%;text-align:left;min-height:56px;padding:12px 16px;margin:0 0 10px;font:400 1rem/1.4 inherit;font-family:inherit;color:var(--ink);background:var(--card);border:2px solid var(--accent);border-radius:14px;cursor:pointer}
+.btn:hover:not(:disabled){background:var(--soft)}
+.btn:disabled{cursor:default}
+.btn.picked{border-width:4px}
+.btn.main{background:var(--accent);color:var(--on);text-align:center;font-weight:700}
+.btn.main:hover{background:#1E40AF}
+.fb{border-radius:14px;padding:16px;margin:6px 0 14px}
+.fb.good{background:var(--ok-bg);color:var(--ok)}
+.fb.stopf{background:var(--warn-bg);color:var(--warn);border:2px solid var(--warn)}
+.fb b{display:block;font-size:1.1rem;margin-bottom:4px}
+.yn{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.yn .btn{text-align:center;font-weight:700;margin:0}
+.yn .btn[aria-pressed="true"]{background:var(--accent);color:var(--on)}
+.q{padding:14px 0;border-bottom:2px solid var(--soft)}
+.q p{margin:0 0 10px;font-weight:700;font-size:1.1rem}
+.pause{background:var(--stop-bg);color:var(--stop);border:4px solid var(--stop);border-radius:20px;padding:24px}
+.pause h2{font-size:1.8rem;margin-bottom:4px}
+.pause ol{margin:16px 0;padding:0;list-style:none;counter-reset:s}
+.pause li{counter-increment:s;display:flex;gap:14px;align-items:flex-start;background:var(--card);color:var(--ink);border-radius:14px;padding:14px;margin-bottom:10px;font-size:1.1rem}
+.pause li::before{content:counter(s);flex:none;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--stop);color:#fff;font-weight:700;display:grid;place-items:center}
+.pause li small{display:block;font-size:.9rem;color:var(--muted)}
+.cert{text-align:center;border:4px double var(--accent);border-radius:18px;padding:24px;margin-bottom:16px;background:var(--bg)}
+.cert h2{font-size:1.6rem}
+.bar{height:16px;background:var(--soft);border-radius:8px;overflow:hidden;margin:0 0 16px}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.chk{display:flex;gap:14px;align-items:flex-start;padding:14px;margin-bottom:10px;border:2px solid var(--line);border-radius:14px;background:var(--card);cursor:pointer}
+.chk input{width:32px;height:32px;flex:none;margin-top:2px;accent-color:var(--accent)}
+.chk:has(input:checked){background:var(--ok-bg);border-color:var(--ok)}
+.chk small{display:block;color:var(--muted);font-size:.9rem;line-height:1.4}
+.draft{background:var(--soft);border-radius:12px;padding:14px 16px;margin:16px 0;font-size:.95rem;white-space:pre-wrap}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));max-width:92%;background:var(--ink);color:#fff;border-radius:14px;padding:14px 20px;font-weight:700;z-index:20}
+.toast[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>КиберЩит 60+</h1>
+    <div class="sz" role="group" aria-label="Размер текста">Текст:
+      <button id="fs1" aria-pressed="true">Обычный</button>
+      <button id="fs2" aria-pressed="false">Крупный 22 px</button>
+    </div>
+  </header>
+  <div class="trust" role="note"><b>Без регистрации:</b> тренажёр никогда не спрашивает ФИО, номер телефона, коды из СМС или данные карты.</div>
+  <div class="tabs" role="tablist" aria-label="Разделы">
+    <button class="tab" role="tab" id="t0" aria-selected="true" aria-controls="p0">Тренажёр звонков и переписок</button>
+    <button class="tab" role="tab" id="t1" aria-selected="false" aria-controls="p1">Экстренная проверка</button>
+    <button class="tab" role="tab" id="t2" aria-selected="false" aria-controls="p2">Памятка для близких</button>
+  </div>
+  <section id="p0" role="tabpanel" aria-labelledby="t0"></section>
+  <section id="p1" role="tabpanel" aria-labelledby="t1" hidden></section>
+  <section id="p2" role="tabpanel" aria-labelledby="t2" hidden></section>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function(){
+"use strict";
+var $=function(s){return document.querySelector(s)};
+var URL_=location.href.split("#")[0];
+
+/* Размер шрифта */
+function fs(b){document.documentElement.classList.toggle("big",b);$("#fs1").setAttribute("aria-pressed",!b);$("#fs2").setAttribute("aria-pressed",b)}
+$("#fs1").onclick=function(){fs(false)};$("#fs2").onclick=function(){fs(true)};
+
+/* Вкладки */
+var tabs=[].slice.call(document.querySelectorAll(".tab"));
+function show(i){tabs.forEach(function(t,k){t.setAttribute("aria-selected",k===i);t.tabIndex=k===i?0:-1;$("#p"+k).hidden=k!==i})}
+tabs.forEach(function(t,i){
+  t.onclick=function(){show(i)};
+  t.onkeydown=function(e){var n=e.key==="ArrowRight"?i+1:e.key==="ArrowLeft"?i-1:null;if(n===null)return;n=(n+3)%3;show(n);tabs[n].focus()};
+});
+show(0);
+
+/* Копирование и уведомление */
+var tt;
+function toast(m){var t=$("#toast");t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true},4500)}
+function copy(text,msg,fallbackBox){
+  function ok(){toast(msg)}
+  function old(){
+    try{var a=document.createElement("textarea");a.value=text;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();var r=document.execCommand("copy");document.body.removeChild(a);if(r)return ok();}catch(e){}
+    toast("Не удалось скопировать автоматически. Выделите текст на экране и скопируйте вручную.");
+    if(fallbackBox){var s=window.getSelection(),rg=document.createRange();rg.selectNodeContents(fallbackBox);s.removeAllRanges();s.addRange(rg)}
+  }
+  try{navigator.clipboard.writeText(text).then(ok,old)}catch(e){old()}
+}
+
+/* 1. Тренажёр */
+var S=[
+{t:"Социальный фонд России",c:"Звонок",s:[
+ {m:"Здравствуйте, это Социальный фонд. Вам положен перерасчёт пенсии. Чтобы записать вас в МФЦ, назовите код из СМС, который сейчас придёт.",
+  o:[["Назову код: запись в МФЦ — это удобно.",0,"Приём: чиновничий тон и приятная новость о прибавке усыпляют бдительность. Код из СМС — ключ к вашим аккаунтам, настоящие организации по телефону его не спрашивают."],
+     ["Скажу, что сама свяжусь с Соцфондом по официальному номеру.",1],
+     ["Уточню, как вас зовут, и продолжу разговор.",0,"Имя и должность легко выдумать. Приём: «официальный» разговор не даёт повесить трубку. Продолжать его не нужно, безопаснее завершить."]],
+  g:"Именно так! Перерасчёт пенсии не требует кодов по телефону. Вопросы решаются в МФЦ или по официальному номеру."},
+ {m:"Вы не понимаете, это в ваших интересах! Если не назвать код сегодня, перерасчёт сгорит и вы потеряете деньги.",
+  o:[["Хорошо, скажу, чтобы не потерять деньги.",0,"Приём: искусственная срочность («сегодня или потеряете»). Когда торопят, это повод остановиться, а не ускориться."],
+     ["Попрошу не спешить и продиктую хотя бы часть кода.",0,"Даже часть кода приближает мошенников к доступу. Просьба «не спешить» не работает: им выгодно, чтобы вы слушали."],
+     ["Спокойно скажу «до свидания» и положу трубку.",1]],
+  g:"Верно! Вежливо завершить разговор — ваше право. Срочность — главный признак обмана."}]},
+{t:"Оператор связи",c:"Звонок",s:[
+ {m:"Срок договора вашей сим-карты истекает сегодня. Если её не продлить, номер отключат.",
+  o:[["Продлю прямо сейчас, продиктую паспортные данные.",0,"Приём: страх потерять номер, к которому привязаны банк и Госуслуги. Паспортные данные мошенникам нужны, чтобы оформлять на вас кредиты."],
+     ["Спрошу, какие данные для этого нужны.",0,"Вопрос безобидный, но он втягивает в разговор: звонящий назовёт «нужное» и поведёт дальше. Лучше сразу завершить звонок."],
+     ["Скажу, что обращусь в салон оператора сама.",1]],
+  g:"Отлично! Договор с оператором не «истекает» за один день. Продлевают его только в салоне или в личном кабинете."},
+ {m:"Номер заблокируют через 10 минут! Для продления нужен код, который придёт в СМС.",
+  o:[["Положу трубку и проверю номер в приложении оператора.",1],
+     ["Назову код: осталось совсем мало времени.",0,"Приём: обратный отсчёт («10 минут»). Код из СМС работает как подпись под действием, которое вы не видели."],
+     ["Попрошу подождать и пойду за очками, чтобы прочитать код.",0,"Это обычная человеческая реакция, но пауза рядом с трубкой всё ещё разговор. Паузу нужно делать без звонящего: положите трубку."]],
+  g:"Так держать! Сомневаетесь — положите трубку и проверьте сами."}]},
+{t:"Служба безопасности банка / МВД",c:"Звонок",s:[
+ {m:"Вас беспокоит служба безопасности банка. С вашего счёта идёт подозрительный перевод. Срочно переведите сбережения на «безопасный счёт».",
+  o:[["Переведу, чтобы спасти деньги.",0,"Приём: страх потерять сбережения плюс «защитная» роль звонящего. «Безопасных счетов» не существует, банк не просит переводить деньги самому."],
+     ["Попрошу перезвонить мне через час.",0,"Мошенники охотно «перезвонят» в самый неудобный момент. Надёжнее самой набрать банк по официальному номеру."],
+     ["Положу трубку и позвоню в банк по номеру с обратной стороны карты.",1]],
+  g:"Верно! Надёжен только номер с карты или из приложения банка."},
+ {m:"Это дело государственной важности, с вами говорит сотрудник МВД. Никому не рассказывайте о звонке, иначе вас привлекут к ответственности.",
+  o:[["Никому не скажу: боюсь последствий.",0,"Приём: запугивание и изоляция. Просьба молчать нужна, чтобы родные не успели вас остановить. Настоящие следователи так не поступают."],
+     ["Расскажу близким и завершу разговор.",1],
+     ["Скажу, что записываю разговор, и продолжу беседу.",0,"Мысль смелая, но спорить с мошенником не нужно: он может давить сильнее. Надёжнее положить трубку и позвонить родным."]],
+  g:"Именно! Разговор с близкими — лучший щит, мошенники боятся огласки."}]},
+{t:"Родственник попал в ДТП",c:"Звонок",s:[
+ {m:"Бабушка, это я! Попал в аварию, всё серьёзно. Нужны деньги, чтобы всё уладить. Только маме не говори!",
+  o:[["Спрошу, что случилось, и уточню подробности.",0,"Ваши вопросы дают подсказки: мошенник подстроит рассказ под них. Лучше сразу завершить разговор и проверить по знакомому номеру."],
+     ["Соберу деньги: он же в беде.",0,"Приём: сильные эмоции и «родной» голос, звонок происходит, пока вы не успели подумать. Это говорит ваша любовь, на неё и рассчитывают."],
+     ["Скажу, что перезвоню, и наберу внука по знакомому номеру.",1]],
+  g:"Очень хорошо! Настоящий внук подождёт минуту. Договоритесь в семье о кодовом слове."},
+ {m:"Сейчас к вам придёт мой друг, отдайте ему наличные. Быстрее, времени нет!",
+  o:[["Отдам деньги этому человеку.",0,"Приём: передача наличных из рук в руки, деньги потом не вернуть. Фраза «быстрее» мешает проверить правду."],
+     ["Не открою дверь незнакомому и позвоню родным.",1],
+     ["Попрошу друга показать документы.",0,"Документы можно подделать, а открытая дверь уже ситуация давления. Безопаснее не открывать и позвонить близким."]],
+  g:"Правильно! Деньги посторонним в руки не отдают, даже «по просьбе родных»."}]},
+{t:"Поликлиника / Управляющая компания",c:"Чат в мессенджере",chat:1,s:[
+ {m:"Здравствуйте! Подтвердите запись к врачу или перерасчёт ЖКУ по ссылке: zapis-polis.example",
+  o:[["Открою ссылку и введу данные.",0,"Приём: похожее на настоящее название и обещание услуги. Адрес может быть совсем не официальным, а форма соберёт ваши данные."],
+     ["Нажму на ссылку, но ничего вводить не буду.",0,"Иногда и простое нажатие открывает поддельную страницу или запускает загрузку. Неожиданные ссылки лучше не открывать."],
+     ["Не буду нажимать и проверю запись на сайте поликлиники или в приложении.",1]],
+  g:"Отлично! Записи и платежи проверяйте сами: на официальном сайте или в приложении."},
+ {m:"Осталось 15 минут! Запись пропадёт, а по ЖКУ начислят пеню. Введите код из СМС для подтверждения.",
+  o:[["Введу код, чтобы всё подтвердить.",0,"Приём: давление временем и угроза штрафа. Код из СМС в чате просят только мошенники."],
+     ["Напишу, что хочу узнать подробности.",0,"Ответ показывает, что номер «живой», и сообщения станут чаще. Лучше не отвечать."],
+     ["Заблокирую отправителя и отмечу сообщение как спам.",1]],
+  g:"Верно! Блокировка и жалоба — самый спокойный ответ."}]}
+];
+var si=0,st=0,stops=0,P0=$("#p0");
+function step(){
+  if(si>=S.length)return cert();
+  var sc=S[si],s=sc.s[st],h='<div class="card"><p class="meta">Сценарий '+(si+1)+' из '+S.length+', шаг '+(st+1)+' из 2<span class="tag">'+sc.c+'</span></p>';
+  h+='<div class="msg'+(sc.chat?" chat":"")+'"><b>'+(sc.chat?"Сообщение от: ":"Вам звонит: ")+"«"+sc.t+"»</b>"+s.m+'</div><h2>Что вы ответите?</h2><div id="opts">';
+  s.o.forEach(function(o,k){h+='<button class="btn" data-k="'+k+'">'+o[0]+'</button>'});
+  P0.innerHTML=h+'</div><div id="fbk" role="status" aria-live="polite"></div></div>';
+  [].forEach.call(P0.querySelectorAll("#opts .btn"),function(b){b.onclick=function(){pick(+b.dataset.k)}});
+}
+function pick(k){
+  var sc=S[si],s=sc.s[st],o=s.o[k];
+  [].forEach.call(P0.querySelectorAll("#opts .btn"),function(b){b.disabled=true;if(+b.dataset.k===k)b.classList.add("picked")});
+  var f=$("#fbk");
+  if(o[1]){
+    var last=st===1&&si===S.length-1;
+    f.innerHTML='<div class="fb good"><b>Спокойный и верный ответ</b>'+s.g+'</div><button class="btn main" id="nx">'+(last?"Получить сертификат":st===0?"К следующему шагу":"К следующему сценарию")+'</button>';
+    $("#nx").onclick=function(){if(st===0)st=1;else{st=0;si++}step();window.scrollTo(0,0)};$("#nx").focus();
+  }else{
+    stops++;
+    f.innerHTML='<div class="fb stopf"><b>Стоп-кадр: давайте разберём уловку</b>'+o[2]+'</div><button class="btn main" id="rt">Попробовать ответить иначе</button>';
+    $("#rt").onclick=function(){step();window.scrollTo(0,0)};$("#rt").focus();
+  }
+}
+function cert(){
+  P0.innerHTML='<div class="card"><div class="cert"><h2>Сертификат киберзащиты</h2><p>Пройдены все 5 сценариев: звонки и переписки мошенников.</p><p>Вы умеете сделать паузу, положить трубку и перепроверить сами.</p><p class="meta">Стоп-кадров разобрано: '+stops+'</p></div><button class="btn main" id="sh">Поделиться в семейном чате</button><button class="btn main" id="ag" style="background:var(--card);color:var(--accent);border:2px solid var(--accent)">Пройти заново</button></div>';
+  $("#sh").onclick=function(){
+    var txt="Я прошёл(ла) тренажёр «КиберЩит 60+» и получил(а) сертификат киберзащиты. Теперь я знаю, как отвечать мошенникам. Попробуйте и вы: "+URL_;
+    if(navigator.share){navigator.share({text:txt}).catch(function(){copy(txt,"Текст скопирован — вставьте его в семейный чат")})}else copy(txt,"Текст скопирован — вставьте его в семейный чат");
+  };
+  $("#ag").onclick=function(){si=0;st=0;stops=0;step()};
+}
+step();
+
+/* 2. Экстренная проверка */
+var Q=["Вас торопят и пугают?","Просят код из СМС, пароль или данные карты?","Просят никому не рассказывать?"],A=[null,null,null],P1=$("#p1");
+function check(){
+  if(A.indexOf(1)>-1){
+    P1.innerHTML='<div class="pause" role="alert"><h2>Правило паузы</h2><p>Это признаки мошенников. Сделайте три шага, прямо сейчас:</p><ol><li><span>Положите трубку<small>Вы вправе прервать разговор в любой момент.</small></span></li><li><span>Сделайте вдох<small>Медленно вдохните на четыре счёта и выдохните на шесть.</small></span></li><li><span>Позвоните родным или в банк по официальному номеру<small>Номер на обратной стороне карты или в приложении банка. Не перезванивайте на номер звонившего.</small></span></li></ol><button class="btn main" id="rs">Проверить другой звонок</button></div>';
+    $("#rs").onclick=function(){A=[null,null,null];check()};$("#rs").focus();return;
+  }
+  var h='<div class="card"><h2>Вам звонят прямо сейчас?</h2><p class="meta">Ответьте на три вопроса.</p>';
+  Q.forEach(function(q,i){h+='<div class="q"><p>'+q+'</p><div class="yn"><button class="btn" data-i="'+i+'" data-v="1" aria-pressed="'+(A[i]===1)+'">Да</button><button class="btn" data-i="'+i+'" data-v="0" aria-pressed="'+(A[i]===0)+'">Нет</button></div></div>'});
+  h+='<div class="fb '+(A.indexOf(null)<0?"good":"")+'" role="status" aria-live="polite" style="margin-top:16px">'+(A.indexOf(null)<0?"<b>Явных признаков обмана нет.</b>Но если что-то смущает, положите трубку и перезвоните сами по официальному номеру.":"Если хотя бы один ответ «Да», мы сразу подскажем, что делать.")+'</div></div>';
+  P1.innerHTML=h;
+  [].forEach.call(P1.querySelectorAll(".yn .btn"),function(b){b.onclick=function(){A[+b.dataset.i]=+b.dataset.v;check();var n=P1.querySelector("[data-i='"+b.dataset.i+"'][data-v='"+b.dataset.v+"']");if(n)n.focus()}});
+}
+check();
+
+/* 3. Памятка для близких */
+var C=[
+["Включить определитель номера","Приложение или функция оператора покажет, кто звонит, и отметит спам."],
+["Запретить звонки с незнакомых номеров в мессенджерах","В настройках конфиденциальности мессенджера оставить звонки только от контактов."],
+["Поставить лимиты на переводы","В банковском приложении задать суточный лимит на переводы и снятие."],
+["Подключить сервис «второй руки» в банке","Крупные операции подтверждает доверенный близкий. Название и условия уточните в своём банке."],
+["Оформить самозапрет на кредиты на Госуслугах","Бесплатно: кредит на имя родственника оформить не смогут."],
+["Запретить установку приложений из неизвестных источников","Так мошенникам сложнее получить удалённый доступ к телефону."]
+],KEY="kibershchit60-v2",D={},P2=$("#p2");
+try{D=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){D={}}
+var MSG="Дорогие мои! Я подготовил(а) для вас спокойный тренажёр, который учит распознавать телефонных мошенников: "+URL_+"\nОн без регистрации и ничего у вас не спрашивает. Если вам позвонят и будут торопить, просить код из СМС или говорить никому не рассказывать, просто положите трубку и позвоните мне. Я никогда не буду ругаться. Люблю вас.";
+function cnt(){var n=0;C.forEach(function(x,i){if(D[i])n++});return n}
+function upd(){var n=cnt();$("#pg").textContent="Сделано: "+n+" из "+C.length;$("#bf").style.width=Math.round(n/C.length*100)+"%"}
+var h='<div class="card"><h2>Настройки телефона родственника</h2><p class="meta">Сядьте рядом и отметьте, что уже сделано.</p><div id="pg" class="meta"></div><div class="bar"><i id="bf"></i></div>';
+C.forEach(function(x,i){h+='<label class="chk"><input type="checkbox" data-i="'+i+'"'+(D[i]?" checked":"")+'><span><b>'+x[0]+'</b><small>'+x[1]+'</small></span></label>'});
+h+='<h3 style="margin-top:20px">Сообщение для семьи</h3><div class="draft" id="dr"></div><button class="btn main" id="sp">Отправить родителям</button></div>';
+P2.innerHTML=h;$("#dr").textContent=MSG;upd();
+[].forEach.call(P2.querySelectorAll("input"),function(c){c.onchange=function(){D[c.dataset.i]=c.checked;try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){}upd()}});
+$("#sp").onclick=function(){copy(MSG,"Текст скопирован — вставьте его в семейный чат",$("#dr"))};
+})();
+</script>
+</body>
+</html>
